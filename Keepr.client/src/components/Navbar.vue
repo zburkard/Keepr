@@ -1,29 +1,34 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg nav-bar-color  px-4">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
-      </div>
+      <button class="btn btn-color">Home</button>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <div class="dropdown">
+      <button v-if="Account.id" class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Create
+      </button>
+      <ul class="dropdown-menu  dropdown-color" aria-labelledby="dropdownMenuButton1">
+        <li data-bs-toggle="modal" data-bs-target="#keepForm" class="btn selectable"> Create Keep</li>
+        <li data-bs-toggle="modal" data-bs-target="#newVault" class="btn selectable"> Create Vault</li>
+      </ul>
+    </div>
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
+    <img class="fixed-top move-logo" src="../assets/img/Keepr logo.png" alt="">
+    <!-- <div>
+
+      <img class="img-fluid justify-content-center m-uto" src="src\assets\img\Keepr logo.png" alt="">
+    </div> -->
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
+
         </li>
       </ul>
+
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -31,10 +36,15 @@
 </template>
 
 <script>
+import { AppState } from "../AppState.js";
 import Login from './Login.vue'
+import { computed } from "@vue/reactivity";
+import { Account } from "../models/Account.js";
 export default {
   setup() {
-    return {}
+    return {
+      Account: computed(() => AppState.account)
+    }
   },
   components: { Login }
 }
@@ -61,4 +71,25 @@ a:hover {
   }
 }
 
+.move-logo {
+  top: 1%;
+  left: 50%
+}
+
+.dropdown-color {
+  background-color: #f0f0ef;
+}
+
+.nav-bar-color {
+  background-color: #FEF6F0;
+}
+
+.btn-color {
+  background-color: #E9D8D6;
+}
+
+.text-vfx2 {
+  color:
+    #7c4dbd;
+}
 </style>
