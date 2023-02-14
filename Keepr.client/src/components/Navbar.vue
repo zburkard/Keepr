@@ -17,7 +17,7 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> -->
-    <img class="fixed-top move-logo" src="../assets/img/Keepr logo.png" alt="">
+    <img class="fixed-top move-logo" src="../assets/img/Keepr.png" alt="">
     <!-- <div>
 
       <img class="img-fluid justify-content-center m-uto" src="src\assets\img\Keepr logo.png" alt="">
