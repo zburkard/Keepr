@@ -32,16 +32,57 @@ public class AccountsRepository
     return newAccount;
   }
 
+
+
+  internal List<Vault> GetMyVaults(string creatorId)
+  {
+    {
+      string sql = @"
+    SELECT
+    v.*,
+    a.*
+    FROM vaults v
+    JOIN accounts a ON a.id = v.creatorId
+    WHERE v.creatorId = @creatorId
+    GROUP BY v.id
+    ;";
+      return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
+      {
+        vault.Creator = profile;
+        return vault;
+      }, new { creatorId }).ToList();
+    }
+  }
   internal Account Edit(Account update)
   {
     string sql = @"
             UPDATE accounts
             SET 
               name = @Name,
-              picture = @Picture
+              picture = @Picture,
+              coverImg = @CoverImg
             WHERE id = @Id;";
     _db.Execute(sql, update);
     return update;
   }
+
+  // internal List<Keep> GetMyKeeps(string creatorId)
+  // {
+  //   string sql = @"
+  //   SELECT
+  //   k.*,
+  //   a.*
+  //   FROM keeps k
+  //   JOIN accounts a ON a.id = v.creatorId
+  //   WHERE k.creatorId = @creatorId
+  //   GROUP BY k.id
+  //   ;";
+  //   return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
+  //   {
+  //     keep.Creator = profile;
+  //     return keep;
+  //   }, new { creatorId }).ToList();
+  // }
 }
+
 
