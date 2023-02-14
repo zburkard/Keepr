@@ -2,12 +2,12 @@ namespace Keepr.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AccountController : ControllerBase
+public class AccountsController : ControllerBase
 {
   private readonly AccountService _accountService;
   private readonly Auth0Provider _auth0Provider;
 
-  public AccountController(AccountService accountService, Auth0Provider auth0Provider)
+  public AccountsController(AccountService accountService, Auth0Provider auth0Provider)
   {
     _accountService = accountService;
     _auth0Provider = auth0Provider;
