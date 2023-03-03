@@ -10,8 +10,6 @@
         </div>
         <div class="modal-body">
           <div class="row container-fluid">
-
-
             <div class="col-md-6 p-4 text-black modal-body">
               <form class=" account-form acc-bio p-3 rounded" @submit.prevent="editAccount()">
                 <div class="acc-pic text-start">

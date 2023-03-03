@@ -1,8 +1,6 @@
 <template>
-
   <div @click="setActiveKeep" data-bs-toggle="modal" data-bs-target="#activeKeepModal"
     class="card bg-dark text-white border border-0 elevation-5 m-3 hover masonry selectable">
-
     <img :src="keep.img" class="card-img" alt="...">
     <div class="card-img-overlay d-flex align-items-end justify-content-between info">
       <img :src="keep.creator.picture" height="40" width="40"
@@ -11,18 +9,12 @@
       <div class="card-title  fs-3 fw-bold text-lowercase  " data-bs-toggle="modal" data-bs-target="#exampleModal">
         <span :title="keep.name" :aria-label="keep.name" class="hovering">{{ keep.name }}</span>
       </div>
-
       <div title="trash keep?" @click="deleteKeep" v-if="keep.creatorId == account.id"
         class=" text-end hovering curoser">
         <i class="mdi mdi-trash-can fs-5 remove rounded-5 px-1 "></i>
       </div>
     </div>
   </div>
-
-
-
-
-
 </template>
 
 
@@ -89,9 +81,6 @@ export default {
   cursor: pointer;
 }
 
-// .masonry {
-//   columns: 4;
-// }
 
 .lock {
   transform: translateY(-6.5rem) translateX(19em);
